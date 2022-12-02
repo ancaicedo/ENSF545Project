@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class BlockPuzzleController : MonoBehaviour {
 
-	public GameObject[] Balls = {null, null};
+	public GameObject[] Balls = {null};
 	private Vector3[] ToyPosition;
 	private Quaternion[] ToyRotation;
 	private Rigidbody ball;
 	public float gravityMultiplier = 2f;
+	public bool functionCalled = false;
 
 	// Remember the original positions of the blocks.
 	void Start () 
@@ -43,13 +44,13 @@ public class BlockPuzzleController : MonoBehaviour {
 	void IncreaseWeight()
 	{
 		Debug.Log("Increase the mass of the first ball");
-		ball.mass += 1;
+		ball.mass += 0.25f;
 	}
 
 	void DecreaseWeight()
 	{
 		Debug.Log("Decrease the mass of the first ball");
-		ball.mass -= 1;
+		ball.mass -= 0.25f;
 	}
 
 	// Update is called once per frame
@@ -66,6 +67,14 @@ public class BlockPuzzleController : MonoBehaviour {
         {
             Application.Quit();
         }
+		else if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			IncreaseWeight();
+		}
+		else if (Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			DecreaseWeight();
+		}
 	}
 
 	void FixedUpdate()
