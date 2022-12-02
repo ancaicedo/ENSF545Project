@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BlockPuzzleController : MonoBehaviour {
 
-	public GameObject[] Balls = {null};
+	public GameObject[] Balls = {null, null};
 	private Vector3[] ToyPosition;
 	private Quaternion[] ToyRotation;
 	private Rigidbody ball;
